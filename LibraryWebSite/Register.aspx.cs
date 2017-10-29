@@ -62,7 +62,7 @@ public partial class Register : System.Web.UI.Page
             //    sql = new SQLOperation();
 
             //' name  ','sex','email','phonenum','idcard','birthday','password'
-            string values = "'" + number + "', " + "N'" + nameRegister.Text + "','" + sex + "','" + EmailBOX.Text + "','" + phoneNumberBOX.Text + "','" + personIDBOX.Text + "','" + birthdayBOX.Text + "','" + pwdSetBOX.Text + "','" + beginDate + "','" + endDate + "','" + "user'";
+            string values = "'" + number + "', " + "N'" + nameRegister.Text + "','" + sex + "','" + EmailBOX.Text + "','" + phoneNumberBOX.Text + "','" + personIDBOX.Text + "','" + birthdayBOX.Text + "','" + pwdSetBOX.Text + "','" + beginDate + "','" + endDate + "','" + "user','',0";
             sql.add("People", values);
             numberLABEL.Text = "你的账号是" + number;
             numberShow.Visible = true;
