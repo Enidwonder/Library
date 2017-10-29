@@ -66,7 +66,7 @@ public partial class Register : System.Web.UI.Page
             sql.add("People", values);
             numberLABEL.Text = "你的账号是" + number;
             numberShow.Visible = true;
-            Response.Write("<script> alert('注册成功你的账号是' + number);location='MyLibraryFirstPage.aspx'</script> ");
+            Response.Write("<script> alert('注册成功你的账号是" + number+"');location='MyLibraryFirstPage.aspx'</script> ");
             /*全部清空*/
             EmailBOX.Text = null;
             codeBOX.Text = null;
