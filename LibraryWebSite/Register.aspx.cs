@@ -11,7 +11,19 @@ public partial class Register : System.Web.UI.Page
     static string checkCode;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            EmailBOX.Text = null;
+            codeBOX.Text = null;
+            personIDBOX.Text = null;
+            phoneNumberBOX.Text = null;
+            // sexBOX.Text = null;
+            workplaceBOX.Text = null;
+            pwdSetBOX.Text = null;
+            pwdSureBOX.Text = null;
+            nameRegister.Text = null;
+            birthdayBOX.Text = null;
+        }
     }
 
     protected void sendEmailBTN_Click(object sender, EventArgs e)
@@ -64,9 +76,8 @@ public partial class Register : System.Web.UI.Page
             //' name  ','sex','email','phonenum','idcard','birthday','password'
             string values = "'" + number + "', " + "N'" + nameRegister.Text + "','" + sex + "','" + EmailBOX.Text + "','" + phoneNumberBOX.Text + "','" + personIDBOX.Text + "','" + birthdayBOX.Text + "','" + pwdSetBOX.Text + "','" + beginDate + "','" + endDate + "','" + "user','',0";
             sql.add("People", values);
-            numberLABEL.Text = "你的账号是" + number;
-            numberShow.Visible = true;
-            Response.Write("<script> alert('注册成功你的账号是" + number+"');location='MyLibraryFirstPage.aspx'</script> ");
+            
+            Response.Write("<script> alert('注册成功你的账号是" + number+"');location=  'MyLibraryFirstPage.aspx'</script> ");
             /*全部清空*/
             EmailBOX.Text = null;
             codeBOX.Text = null;
@@ -79,5 +90,10 @@ public partial class Register : System.Web.UI.Page
             nameRegister.Text = null;
             birthdayBOX.Text = null;
         }
+    }
+
+    protected void returnBTN_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/MyLibraryFirstPage.aspx");
     }
 }

@@ -35,11 +35,9 @@
         <asp:TextBox ID="pwdSureBOX" runat="server" TextMode="Password"></asp:TextBox>
         <br />
         <asp:Button ID="registerBTN" runat="server" Text="注册"  OnClick="registerBTN_Click" />
+        <asp:Button ID="returnBTN" runat="server" Text="返回" OnClick="returnBTN_Click" />
         <br />
-    </div>
-        <div id="numberShow" runat="server" visible="false"> 
-            <asp:Label ID="numberLABEL" runat="server" ></asp:Label>
-        </div>
+    
     </form>
 </body>
 </html>
