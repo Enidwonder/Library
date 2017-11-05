@@ -17,7 +17,7 @@
 
     <br /><br />
         <b> ·</b>
-        <asp:HyperLink ID="myLibraryLINK" runat="server" NavigateUrl="~/MyLibraryFirstPage.aspx"  Text="我的图书馆"></asp:HyperLink>
+        <asp:Button ID="linkMyLibrary" runat="server" Text="我的图书馆" OnClick="linkMyLibrary_Click" />
         
     </div>
     </form>

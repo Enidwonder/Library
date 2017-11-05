@@ -26,11 +26,11 @@
         <ItemTemplate>
             <tr>
                 <td><%# Eval("number") %></td>
-                <td> <%# Eval("Bookname")%></td>
-                <td><%# Eval("Author") %></td>
-                <td><%# Eval("PrintInfo") %></td>
-                <td><asp:LinkButton ID="btn" runat="server" Text="修改信息" CommandName="name" CommandArgument='<%# Eval("number")%>'></asp:LinkButton></td>
-                <td><asp:LinkButton ID="btnDel" runat="server" Text="删除" CommandName="name" CommandArgument='<%# Eval("number")%>'></asp:LinkButton></td>
+                <td> <%# Eval("Name")%></td>
+                <td><%# Eval("Email") %></td>
+                <td><%# Eval("EndTime") %></td>
+                <td><asp:LinkButton ID="btn" runat="server" Text="修改信息" CommandName="change" CommandArgument='<%# Eval("number")%>'></asp:LinkButton></td>
+                <td><asp:LinkButton ID="btnDel" runat="server" Text="删除" CommandName="del" CommandArgument='<%# Eval("number")%>'></asp:LinkButton></td>
             </tr>
         </ItemTemplate>
         <FooterTemplate>

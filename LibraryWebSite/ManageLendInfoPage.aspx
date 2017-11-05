@@ -28,7 +28,7 @@
                 <td> <%# Eval("BookId")%></td>
                 <td><%# Eval("UserId") %></td>
                 <td><%# Eval("ReturnTime") %></td>
-                <td><asp:LinkButton ID="btn" runat="server" Text="修改信息" CommandName="change" CommandArgument='<%# Eval("BookId")%>'></asp:LinkButton></td>
+                <td><asp:LinkButton ID="btn" runat="server" Text="同意借阅" CommandName="change" CommandArgument='<%# Eval("BookId")%>'></asp:LinkButton></td>
                 <td><asp:LinkButton ID="btnDel" runat="server" Text="删除" CommandName="del" CommandArgument='<%# Eval("BookId")%>'></asp:LinkButton></td>
             </tr>
         </ItemTemplate>

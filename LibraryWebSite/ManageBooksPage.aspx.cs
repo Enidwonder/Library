@@ -23,7 +23,14 @@ public partial class ManageBooksPage : System.Web.UI.Page
 
     protected void repeaterBooks_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-
+        if (e.CommandName == "del")
+        {
+            string numBook = e.CommandArgument.ToString();
+            SQLOperation sql = new SQLOperation();
+            sql.delete(" Books ", " NumBook = '" + numBook + "'");
+            Response.Write("<script>alert('删除成功！');location='ManageBooksPage.aspx'</script>");
+            
+        }
     }
 
     protected void btnBack_Click(object sender, EventArgs e)

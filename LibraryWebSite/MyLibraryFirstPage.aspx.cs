@@ -37,8 +37,16 @@ public partial class MyLibraryFirstPage : System.Web.UI.Page
             }
             else if((getPwd = dt.Rows[0][0].ToString().Trim()) == pwd)
             {
-                Session["UserNownumber"] = number;
-                Response.Write("<script> alert('登陆成功！');location='AfterLoginFirst.aspx'</script> ");
+                if(sqlKind == "user")
+                {
+                    Session["UserNownumber"] = number;
+                    Response.Write("<script> alert('登陆成功！');location='AfterLoginFirst.aspx'</script> ");
+                }
+                else if(sqlKind == "manager")
+                {
+                    Session["ManagerNumber"] = number;
+                    Response.Write("<script> alert('管理员登陆成功！');location='ManagerFirstPage.aspx'</script> ");
+                }
             }
         }else Response.Write("<script> alert('请选择类型！');</script> ");
 

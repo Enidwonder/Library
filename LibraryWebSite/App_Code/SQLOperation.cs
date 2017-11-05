@@ -47,7 +47,7 @@ public class SQLOperation
         SQLconnect();
         sqlconnect.Open();
         // UPDATE Person SET FirstName = 'Fred' WHERE LastName = 'Wilson' 
-        string sqlCommandStr = "update" + TableName + "set" + set + "where" + where;
+        string sqlCommandStr = "update " + TableName + "set " + set + "where" + where;
         SqlCommand sqlcmd = new SqlCommand(sqlCommandStr, sqlconnect);
         try
         {

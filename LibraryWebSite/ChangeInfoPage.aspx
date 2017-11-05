@@ -14,8 +14,7 @@
         Email: <asp:TextBox ID="emailBeforeBOX" runat="server" ></asp:TextBox><br />
         新Email:<asp:TextBox ID="newEmailBOX" runat="server"></asp:TextBox><br />
         电话：<asp:TextBox ID="phoneNUMBOX" runat="server" ></asp:TextBox><br />
-        邮编：<asp:TextBox ID="postCodeBOX" runat="server"></asp:TextBox><br />
-        住址：<asp:TextBox ID="addressBOX" runat="server"></asp:TextBox><br />
+        
         <asp:Button ID="ChangeBTN" runat="server" Text="确定" OnClick="ChangeBTN_Click" />
         <asp:Button ID="Returnn" runat="server" Text="返回" OnClick="Returnn_Click" />
 

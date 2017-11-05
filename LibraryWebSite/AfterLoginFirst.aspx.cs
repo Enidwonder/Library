@@ -12,10 +12,18 @@ public partial class AfterLoginFirst : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            string number = Session["UserNownumber"].ToString();
             SQLOperation sqlOperate = new SQLOperation();
             DataTable dt = new DataTable();
-            dt = sqlOperate.select(" * ", " People ", " number='" + number + "' and kind='user'");
+            if (Session["UserNownumber"].ToString() != null)
+            {
+                string number = Session["UserNownumber"].ToString();
+                dt = sqlOperate.select(" * ", " People ", " number='" + number + "' and kind='user'");
+            }
+            else if(Session["ManagerNumber"].ToString() != null)
+            {
+                string number = Session["ManagerNumber"].ToString();
+                dt = sqlOperate.select(" * ", " People ", " number='" + number + "' and kind='manager'");
+            }
             nameLABEL.Text = dt.Rows[0][2].ToString().Trim();
             sexLABEL.Text = dt.Rows[0][3].ToString().Trim();
             emailLABEL.Text = dt.Rows[0][4].ToString().Trim();
