@@ -15,10 +15,10 @@ public partial class ManagerFirstPage : System.Web.UI.Page
             SQLOperation sqlOperate = new SQLOperation();
             DataTable dt = new DataTable();
             
-            if (Session["ManagerNumber"].ToString() != null)
+            if (Session["NowManagerId"].ToString() != null)
             {
-                string number = Session["ManagerNumber"].ToString();
-                dt = sqlOperate.select(" * ", " People ", " number='" + number + "' and kind='manager'");
+                string id = Session["NowManagerId"].ToString();
+                dt = sqlOperate.select(" * ", " People ", " id=" + id + " and kind='manager'");
             }
             nameLABEL.Text = dt.Rows[0][2].ToString().Trim();
             sexLABEL.Text = dt.Rows[0][3].ToString().Trim();

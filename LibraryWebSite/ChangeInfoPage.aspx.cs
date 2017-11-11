@@ -8,25 +8,25 @@ using System.Web.UI.WebControls;
 
 public partial class ChangeInfoPage : System.Web.UI.Page
 {
-    static string number = null, kind = null;
+    static string id = null, kind = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             
-            if(Session["UserNownumber"] != null)
+            if(Session["NowUserId"] != null)
             {
-                number = Session["UserNownumber"].ToString();
+                id = Session["NowUserId"].ToString();
                 kind = "user";
             }
-            else if(Session["ManagerNumber"] != null)
+            else if(Session["NowManagerId"] != null)
             {
-                number = Session["ManagerNumber"].ToString();
+                id = Session["NowManagerId"].ToString();
                 kind = "manager";
             }
             SQLOperation sqlOperate = new SQLOperation();
             DataTable dt = new DataTable();
-            dt = sqlOperate.select(" Email,PhoneNum ", " People ", " number='" + number + "' and kind='" + kind + "'");
+            dt = sqlOperate.select(" Email,PhoneNum ", " People ", " id=" + id + " and kind='" + kind + "'");
             //getPwd = dt.Rows[0][0].ToString().Trim()
             emailBeforeBOX.Text = dt.Rows[0][0].ToString().Trim();
             phoneNUMBOX.Text = dt.Rows[0][1].ToString().Trim();
@@ -39,7 +39,7 @@ public partial class ChangeInfoPage : System.Web.UI.Page
         if (newEmailBOX.Text != null) newEmail = newEmailBOX.Text;
         if (phoneNUMBOX.Text != null) newPhone = phoneNUMBOX.Text;
         SQLOperation sql = new SQLOperation();
-        sql.update(" People ", " Email = '" + newEmail + "' , PhoneNum = '" + newPhone + "' ", " number = '" + number + "' and kind = '" + kind + "'");
+        sql.update(" People ", " Email = '" + newEmail + "' , PhoneNum = '" + newPhone + "' ", " id = " + id + " and kind = '" + kind + "'");
         if(kind == "manager")
         {
             Response.Write("<script> alert('信息修改成功！');location='ManagerFirstPage.aspx'</script> ");

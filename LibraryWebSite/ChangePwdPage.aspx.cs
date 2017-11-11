@@ -16,12 +16,12 @@ public partial class ChangePwdPage : System.Web.UI.Page
 
     protected void changePwdBTN_Click(object sender, EventArgs e)
     {
-        string number = Session["UserNownumber"].ToString();
+        string id = Session["NowUserId"].ToString();
         string pwd = beforePwdBOX.Text;
         string getPwd;
         SQLOperation sqlOperate = new SQLOperation();
         DataTable dt = new DataTable();
-        dt = sqlOperate.select(" password ", " People ", " number='" + number + "' and kind='user'");
+        dt = sqlOperate.select(" password ", " People ", " id=" + id + " and kind='user'");
         if ((getPwd = dt.Rows[0][0].ToString().Trim()) != pwd)
         {
             Response.Write("<script> alert('密码错误！');</script> ");
@@ -37,7 +37,7 @@ public partial class ChangePwdPage : System.Web.UI.Page
             }
             else
             {
-                sqlOperate.update(" People ", " password = '" + newSetPwdBOX.Text + "'"," number='" + number + "'");
+                sqlOperate.update(" People ", " password = '" + newSetPwdBOX.Text + "'"," id='" + id + "'");
                 Response.Write("<script> alert('修改成功！');</script> ");
             }
         }    

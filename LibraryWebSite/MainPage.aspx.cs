@@ -11,8 +11,8 @@ public partial class MainPage : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-           /* Session["UserNownumber"] = null;
-            Session["ManagerNumber"] = null;*/
+           /* Session["NowUserId"] = null;
+            Session["NowManagerId"] = null;*/
             searchTypeBOX.Items.Add("题名");
             searchTypeBOX.Items.Add("责任者");
             searchTypeBOX.Items.Add("主题词");
@@ -32,11 +32,11 @@ public partial class MainPage : System.Web.UI.Page
     {
        // try
        // {
-            if (Session["UserNownumber"] != null)
+            if (Session["NowUserId"] != null)
             {
                 Response.Redirect("~/AfterLoginFirst.aspx");
             }
-            else if (Session["ManagerNumber"] != null)
+            else if (Session["NowManagerId"] != null)
             {
                 Response.Redirect("~/ManagerFirstPage.aspx");
             }

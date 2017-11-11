@@ -11,6 +11,12 @@
     <form id="form1" runat="server">
     <div>
         <b> 我的首页</b><br /> <br />
+        <asp:DropDownList ID="drop" runat="server">
+            <asp:ListItem Text="bookname"></asp:ListItem>
+            <asp:ListItem Text="author"></asp:ListItem>  
+            </asp:DropDownList>
+        <asp:TextBox ID="txtSearch" runat="server" ></asp:TextBox>
+        <asp:Button ID="btnSearch" runat="server" Text="搜索" OnClick="btnSearch_Click" /><br />
     <b> ·个人信息</b><br />
         用户姓名：<asp:Label ID="nameLABEL" runat="server"></asp:Label><br />
         性别：<asp:Label ID="sexLABEL" runat="server"></asp:Label><br />

@@ -28,7 +28,7 @@ public partial class MyLibraryFirstPage : System.Web.UI.Page
        
         if(sqlKind != null)
         {
-            dt = sqlOperate.select(" password ", " People ", " number='" + number + "' and kind='" + sqlKind + "'");
+            dt = sqlOperate.select(" password,id ", " People ", " number='" + number + "' and kind='" + sqlKind + "'");
             if (dt.Rows.Count == 0) Response.Write("<script> alert('账号不存在');</script> ");
             else if ((getPwd = dt.Rows[0][0].ToString().Trim()) != pwd)
             {
@@ -39,12 +39,12 @@ public partial class MyLibraryFirstPage : System.Web.UI.Page
             {
                 if(sqlKind == "user")
                 {
-                    Session["UserNownumber"] = number;
+                    Session["NowUserId"] = dt.Rows[0][1].ToString().Trim();
                     Response.Write("<script> alert('登陆成功！');location='AfterLoginFirst.aspx'</script> ");
                 }
                 else if(sqlKind == "manager")
                 {
-                    Session["ManagerNumber"] = number;
+                    Session["NowManagerId"] = dt.Rows[0][1].ToString().Trim(); 
                     Response.Write("<script> alert('管理员登陆成功！');location='ManagerFirstPage.aspx'</script> ");
                 }
             }

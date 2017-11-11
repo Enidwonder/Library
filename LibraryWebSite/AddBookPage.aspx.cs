@@ -24,7 +24,7 @@ public partial class AddBookPage : System.Web.UI.Page
         string subject = txtSubject.Text;
         string printInfo = txtPrintInfo.Text;
         SQLOperation sql = new SQLOperation();
-        string values = "'" + name + "','" + numSpecial + "','" + numBook + "','" + author + "','" + address + "', " + price + " ,'" + kind + "','" + printInfo + "','" + subject + "'";
+        string values = "'" + name + "','" + numSpecial + "','" + numBook + "','" + author + "','" + address + "', " + price + " ,'" + kind + "','" + printInfo + "','" + subject + "',-1";
 
         sql.add(" Books ", values);
         Response.Write("<script> alert('添加图书成功！');location=  'ManageBooksPage.aspx'</script> ");
