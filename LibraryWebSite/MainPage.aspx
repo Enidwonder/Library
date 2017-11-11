@@ -11,9 +11,12 @@
     <form id="form1" runat="server">
     <div>
     <b>图书馆 </b> <br />
-        <asp:ListBox  ID="searchTypeBOX" runat="server" SelectionMode="Single" ></asp:ListBox>
-        <asp:TextBox ID="searchBOX" runat="server" Text =" 请输入搜索关键字/词" ></asp:TextBox>
-        <asp:Button ID="searchBTN" runat="server" Text ="搜索" OnClick="searchBTN_Click" />
+        <asp:DropDownList ID="drop" runat="server">
+            <asp:ListItem Text="bookname"></asp:ListItem>
+            <asp:ListItem Text="author"></asp:ListItem>  
+            </asp:DropDownList>
+        <asp:TextBox ID="txtSearch" runat="server" ></asp:TextBox>
+        <asp:Button ID="btnSearch" runat="server" Text="搜索" OnClick="btnSearch_Click" />
 
     <br /><br />
         <b> ·</b>

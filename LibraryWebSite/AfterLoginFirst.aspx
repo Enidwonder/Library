@@ -25,7 +25,8 @@
         证件结束日期：<asp:Label ID="endTimeLABEL" runat="server"></asp:Label><br />
         <asp:Button ID="changePwdBTN" runat="server" Text="修改密码" OnClick="changePwdBTN_Click" />
         <asp:Button ID="changeUserInfoBTN" runat="server" Text="修改信息" OnClick="changeUserInfoBTN_Click" />
-        <asp:HyperLink ID="backToMainPageLINK" runat="server" Text="返回我的图书馆登陆页" NavigateUrl="~/MyLibraryFirstPage.aspx"></asp:HyperLink>
+        <asp:HyperLink ID="backToMainPageLINK" runat="server" Text="返回我的图书馆登陆页" NavigateUrl="~/MyLibraryFirstPage.aspx"></asp:HyperLink><br />
+        <asp:HyperLink ID="hylinkMyLend" runat="server" Text="我的借阅" NavigateUrl="~/MyLend.aspx"></asp:HyperLink>
 
     </div>
     </form>

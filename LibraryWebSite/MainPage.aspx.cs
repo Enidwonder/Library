@@ -13,19 +13,25 @@ public partial class MainPage : System.Web.UI.Page
         {
            /* Session["NowUserId"] = null;
             Session["NowManagerId"] = null;*/
-            searchTypeBOX.Items.Add("题名");
-            searchTypeBOX.Items.Add("责任者");
-            searchTypeBOX.Items.Add("主题词");
-            searchTypeBOX.Items.Add("索书号");
-            searchTypeBOX.Items.Add("出版社");
-            searchTypeBOX.Items.Add("题名拼音");
-            searchTypeBOX.Items.Add("责任者拼音");
+            
         }
     }
 
-    protected void searchBTN_Click(object sender, EventArgs e)
+    protected void btnSearch_Click(object sender, EventArgs e)
     {
-
+        if (txtSearch.Text != null)
+        {
+            Session["NowSearchBook"] = txtSearch.Text;
+            if (drop.SelectedIndex >= 0)
+            {
+                Session["NowSearchIndex"] = drop.SelectedValue.ToString();
+            }
+            Response.Redirect("~/BookInfoPage.aspx");
+        }
+        else
+        {
+            Response.Write("<script> alert('请输入搜索内容！');</script> ");
+        }
     }
 
     protected void linkMyLibrary_Click(object sender, EventArgs e)
