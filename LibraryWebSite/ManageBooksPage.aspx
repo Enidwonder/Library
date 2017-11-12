@@ -29,15 +29,23 @@
                 <td> <%# Eval("Bookname")%></td>
                 <td><%# Eval("Author") %></td>
                 <td><%# Eval("PrintInfo") %></td>
-                <td><asp:LinkButton ID="btn" runat="server" Text="修改信息" CommandName="change" CommandArgument='<%# Eval("NumBook")%>'></asp:LinkButton></td>
-                <td><asp:LinkButton ID="btnDel" runat="server" Text="删除" CommandName="del" CommandArgument='<%# Eval("NumBook")%>'></asp:LinkButton></td>
+                <td><asp:LinkButton ID="btn" runat="server" Text="修改信息" CommandName="change" CommandArgument='<%# Eval("id")%>'></asp:LinkButton></td>
+                <td><asp:LinkButton ID="btnDel" runat="server" Text="删除" CommandName="del" CommandArgument='<%# Eval("id")%>'></asp:LinkButton></td>
             </tr>
         </ItemTemplate>
         <FooterTemplate>
             </table>
         </FooterTemplate>
     </asp:Repeater>
-        <br /><asp:Button ID="btnBack" runat="server" Text="返回管理员首页" OnClick="btnBack_Click" />
+        <asp:Button ID="btnUp" runat="server" Text="上一页"  OnClick="btnUp_Click" />
+        <asp:Button ID="btnDown" runat="server" Text="下一页" OnClick="btnDown_Click"/>
+        <asp:Button ID="btnFirst" runat="server" Text="首页" OnClick="btnFirst_Click" />
+        <asp:Button ID="btnLast" runat="server" Text="尾页"  OnClick="btnLast_Click"/>
+        页次：<asp:Label ID="lblNow" runat="server" Text="1"></asp:Label>
+        /<asp:Label ID="lblTotal" runat="server" Text="1"></asp:Label>
+        转<asp:TextBox ID="txtJump" Text="1" runat="server" Width="16px"></asp:TextBox>
+        <asp:Button ID="btnJump" runat="server" Text="Go" OnClick="btnJump_Click"/>
+        <br /><asp:Button ID="btnBack" runat="server" Text="返回管理员首页" OnClick="btnBack_Click1" />
     </div>
     </form>
 </body>

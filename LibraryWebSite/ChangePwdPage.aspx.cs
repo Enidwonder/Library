@@ -8,20 +8,34 @@ using System.Web.UI.WebControls;
 
 public partial class ChangePwdPage : System.Web.UI.Page
 {
+    static string kind,id;
     SQLOperation sqlOperate = new SQLOperation();
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["NowUserId"] == null && Session["NowManagerId"] == null)
+        {
+            Response.Write("<script>alert('请先登录！');location='MyLibraryFirstPage.aspx'</script>");
+        }
+        if (Session["NowUserId"] != null)
+        {
+            id = Session["NowUserId"].ToString().Trim();
+            kind = "user";
+        }
+        else if (Session["NowManagerId"] != null)
+        {
+            id = Session["NowManagerId"].ToString().Trim();
+            kind = "manager";
+        }
     }
 
     protected void changePwdBTN_Click(object sender, EventArgs e)
     {
-        string id = Session["NowUserId"].ToString();
+        //string id = Session["NowUserId"].ToString();
         string pwd = beforePwdBOX.Text;
         string getPwd;
         SQLOperation sqlOperate = new SQLOperation();
         DataTable dt = new DataTable();
-        dt = sqlOperate.select(" password ", " People ", " id=" + id + " and kind='user'");
+        dt = sqlOperate.select(" password ", " People ", " id=" + id + " and kind='"+kind+"'");
         if ((getPwd = dt.Rows[0][0].ToString().Trim()) != pwd)
         {
             Response.Write("<script> alert('密码错误！');</script> ");

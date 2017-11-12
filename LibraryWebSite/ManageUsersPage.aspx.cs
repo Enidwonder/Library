@@ -10,14 +10,22 @@ public partial class ManageUsersPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if(Session["NowManagerId"] != null)
         {
-            SQLOperation sql = new SQLOperation();
-            DataTable dt = new DataTable();
-            dt = sql.select(" * ", " People "," kind = 'user'");
-            repeaterUser.DataSource = dt;
-            repeaterUser.DataBind();
+            if (!IsPostBack)
+            {
+                SQLOperation sql = new SQLOperation();
+                DataTable dt = new DataTable();
+                dt = sql.select(" * ", " People ", " kind = 'user'");
+                repeaterUser.DataSource = dt;
+                repeaterUser.DataBind();
+            }
         }
+        else
+        {
+            Response.Write("<script>alert('请先登录！');location='MyLibraryFirstPage.aspx'</script>");
+        }
+        
     }
 
     protected void btnBack_Click(object sender, EventArgs e)

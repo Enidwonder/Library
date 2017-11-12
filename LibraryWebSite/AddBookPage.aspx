@@ -16,7 +16,10 @@
         出版信息：<asp:TextBox ID="txtPrintInfo" runat="server"></asp:TextBox><br />
         馆藏信息：<asp:TextBox ID="txtAddress" runat="server"></asp:TextBox><br />
         价格：<asp:TextBox ID="txtPrice" runat="server"></asp:TextBox><br />
-        书目类型：<asp:TextBox ID="txtKind" runat="server"></asp:TextBox><br />
+        书目类型：<asp:DropDownList ID="drop" runat="server">
+            <asp:ListItem Text="类型1"></asp:ListItem>
+            <asp:ListItem Text="类型2"></asp:ListItem>  
+            </asp:DropDownList>
         所属学科：<asp:TextBox ID="txtSubject" runat="server"></asp:TextBox><br />
         索书号：<asp:TextBox ID="txtNumSpecial" runat="server"></asp:TextBox><br />
         书号：<asp:TextBox ID="txtNumBook" runat="server"></asp:TextBox><br />

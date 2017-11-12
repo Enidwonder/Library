@@ -40,11 +40,14 @@ public partial class MyLibraryFirstPage : System.Web.UI.Page
                 if(sqlKind == "user")
                 {
                     Session["NowUserId"] = dt.Rows[0][1].ToString().Trim();
+                    Session["NowManagerId"] = null;
                     Response.Write("<script> alert('登陆成功！');location='AfterLoginFirst.aspx'</script> ");
+                    
                 }
                 else if(sqlKind == "manager")
                 {
-                    Session["NowManagerId"] = dt.Rows[0][1].ToString().Trim(); 
+                    Session["NowManagerId"] = dt.Rows[0][1].ToString().Trim();
+                    Session["NowUserId"] = null;
                     Response.Write("<script> alert('管理员登陆成功！');location='ManagerFirstPage.aspx'</script> ");
                 }
             }

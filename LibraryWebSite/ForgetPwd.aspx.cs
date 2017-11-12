@@ -8,11 +8,14 @@ using System.Web.UI.WebControls;
 
 public partial class ForgetPwd : System.Web.UI.Page
 {
-    static string checkCode;
+    static string checkCode, kind;
     SpecialOperations operate = new SpecialOperations();
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
+        if (kindUserBTN.Checked) kind = "user";
+        else if (kindManagerBTN.Checked) kind = "manager";
+        else { kind = null; }
     }
 
     protected void getCodeBTN_Click(object sender, EventArgs e)
@@ -21,29 +24,37 @@ public partial class ForgetPwd : System.Web.UI.Page
         SQLOperation sqlOperate = new SQLOperation();
         DataTable dt = new DataTable();
         string number = cardNumberBOX.Text;
-        if(number == null || number == "")
+        if(kind != null)
         {
-            Response.Write("<script> alert('请输入账号！');</script> ");
-            newPwdSetBOX.Text = null;
-            newPwdSureBOX.Text = null;
+            if (number == null || number == "")
+            {
+                Response.Write("<script> alert('请输入账号！');</script> ");
+                newPwdSetBOX.Text = null;
+                newPwdSureBOX.Text = null;
+            }
+            else
+            {
+                dt = sqlOperate.select(" email ", " People ", " number='" + number + "' and kind='" + kind + "'");
+                if (dt.Rows.Count == 0) { Response.Write("<script> alert('账号不存在');</script> "); cardNumberBOX.Text = null; }
+                else
+                {
+                    getEmail = dt.Rows[0][0].ToString();
+
+                    checkCode = operate.generateRandomNum(6);
+                    string body = "你的验证码是" + checkCode; //生成六位验证码发送至邮箱
+
+                    if (operate.EmailSend(body, getEmail))
+                        Response.Write("<script> alert('验证码已发送至邮箱，请及时查收！');</script> ");
+                    else
+                        Response.Write("<script> alert('验证码发送失败！');</script> ");
+                }
+            }
         }
         else
         {
-            dt = sqlOperate.select(" email ", " People ", " number='" + number + "' and kind='user'");
-            if (dt.Rows.Count == 0) { Response.Write("<script> alert('账号不存在');</script> "); cardNumberBOX.Text = null; }
-            else
-            {
-                getEmail = dt.Rows[0][0].ToString();
-
-                checkCode = operate.generateRandomNum(6);
-                string body = "你的验证码是" + checkCode; //生成六位验证码发送至邮箱
-
-                if (operate.EmailSend(body, getEmail))
-                    Response.Write("<script> alert('验证码已发送至邮箱，请及时查收！');</script> ");
-                else
-                    Response.Write("<script> alert('验证码发送失败！');</script> ");
-            }
+            Response.Write("<script> alert('请先选择类型！');location='ForgetPwd.aspx'</script> ");
         }
+        
         
         
         }

@@ -11,26 +11,34 @@ public partial class ChangeInfoPage : System.Web.UI.Page
     static string id = null, kind = null;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if(Session["NowUserId"] != null || Session["NowManagerId"] != null)
         {
-            
-            if(Session["NowUserId"] != null)
+            if (!IsPostBack)
             {
-                id = Session["NowUserId"].ToString();
-                kind = "user";
+
+                if (Session["NowUserId"] != null)
+                {
+                    id = Session["NowUserId"].ToString();
+                    kind = "user";
+                }
+                else if (Session["NowManagerId"] != null)
+                {
+                    id = Session["NowManagerId"].ToString();
+                    kind = "manager";
+                }
+                SQLOperation sqlOperate = new SQLOperation();
+                DataTable dt = new DataTable();
+                dt = sqlOperate.select(" Email,PhoneNum ", " People ", " id=" + id + " and kind='" + kind + "'");
+                //getPwd = dt.Rows[0][0].ToString().Trim()
+                emailBeforeBOX.Text = dt.Rows[0][0].ToString().Trim();
+                phoneNUMBOX.Text = dt.Rows[0][1].ToString().Trim();
             }
-            else if(Session["NowManagerId"] != null)
-            {
-                id = Session["NowManagerId"].ToString();
-                kind = "manager";
-            }
-            SQLOperation sqlOperate = new SQLOperation();
-            DataTable dt = new DataTable();
-            dt = sqlOperate.select(" Email,PhoneNum ", " People ", " id=" + id + " and kind='" + kind + "'");
-            //getPwd = dt.Rows[0][0].ToString().Trim()
-            emailBeforeBOX.Text = dt.Rows[0][0].ToString().Trim();
-            phoneNUMBOX.Text = dt.Rows[0][1].ToString().Trim();
         }
+        else
+        {
+            Response.Write("<script>alert('请先登录！');location='MyLibraryFirstPage.aspx'</script>");
+        }
+        
     }
 
     protected void ChangeBTN_Click(object sender, EventArgs e)

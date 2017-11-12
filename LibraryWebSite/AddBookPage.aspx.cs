@@ -9,7 +9,10 @@ public partial class AddBookPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if(Session["NowManagerId"] == null)
+        {
+            Response.Write("<script>alert('请先登录！');location='MyLibraryFirstPage.aspx'</script>");
+        }
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -19,7 +22,11 @@ public partial class AddBookPage : System.Web.UI.Page
         string numSpecial = txtNumSpecial.Text;
         string address = txtAddress.Text;
         string author = txtAuthor.Text;
-        string kind = txtKind.Text;
+        string kind = null;
+         if (drop.SelectedIndex >= 0)
+        {
+            kind = drop.SelectedValue.ToString();
+        }
         string price = txtPrice.Text;
         string subject = txtSubject.Text;
         string printInfo = txtPrintInfo.Text;

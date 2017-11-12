@@ -17,7 +17,7 @@ public partial class MainPage : System.Web.UI.Page
         }
     }
 
-    protected void btnSearch_Click(object sender, EventArgs e)
+    protected void btnSearch_Click(object sender, EventArgs e) //搜索
     {
         if (txtSearch.Text != null)
         {
@@ -34,7 +34,7 @@ public partial class MainPage : System.Web.UI.Page
         }
     }
 
-    protected void linkMyLibrary_Click(object sender, EventArgs e)
+    protected void linkMyLibrary_Click(object sender, EventArgs e) //跳转判断
     {
        // try
        // {
