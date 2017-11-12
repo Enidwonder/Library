@@ -83,7 +83,7 @@ public partial class ForgetPwd : System.Web.UI.Page
                 else
                 {
                     sqlOperate.update(" People ", " password = '" + newPwdSetBOX.Text + "'", " number='" + number + "'");
-                    Response.Write("<script> alert('修改成功！');location='MyLibraryFirstPage.aspx'</script> ");
+                    Response.Write("<script> alert('密码已修改，请重新登录！');location='MyLibraryFirstPage.aspx'</script> ");
                     codeBOX.Text = null;
                     cardNumberBOX.Text = null;
                     newPwdSetBOX.Text = null;
@@ -93,5 +93,10 @@ public partial class ForgetPwd : System.Web.UI.Page
         
         }
             
+    }
+
+    protected void back_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/AfterLoginFirst.aspx");
     }
 }

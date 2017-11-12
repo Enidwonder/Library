@@ -25,7 +25,7 @@ public partial class ManageBooksPage : System.Web.UI.Page
     {
         if (e.CommandName == "del")
         {
-            string numBook = e.CommandArgument.ToString();
+            string numBook = e.CommandArgument.ToString().Trim();
             SQLOperation sql = new SQLOperation();
             sql.delete(" Books ", " NumBook = '" + numBook + "'");
             Response.Write("<script>alert('删除成功！');location='ManageBooksPage.aspx'</script>");

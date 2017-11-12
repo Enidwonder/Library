@@ -17,6 +17,7 @@
         设置新密码：<asp:TextBox ID="newPwdSetBOX" runat="server" ></asp:TextBox><br />
         确认新密码：<asp:TextBox ID="newPwdSureBOX" runat="server"></asp:TextBox><br />
         <asp:Button ID="setNewPwdBTN" runat="server" Text="重置密码" OnClick="setNewPwdBTN_Click" /><br />
+        <asp:Button ID="back" runat="server" Text="返回" OnClick="back_Click" />
     </div>
     </form>
 </body>

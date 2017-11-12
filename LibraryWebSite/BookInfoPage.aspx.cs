@@ -99,4 +99,17 @@ public partial class BookInfoPage : System.Web.UI.Page
         }
 
     }
+
+    protected void back_Click(object sender, EventArgs e)
+    {
+        if(Session["NowUserId"] != null)
+        {
+            Response.Redirect("~/AfterLoginFirst.aspx");
+        }
+        else
+        {
+            Response.Redirect("~/MainPage.aspx");
+        }
+        
+    }
 }

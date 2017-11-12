@@ -44,7 +44,7 @@
             </table>
         </FooterTemplate>
     </asp:Repeater>
-       
+       <asp:Button ID="back" runat="server" Text="返回" OnClick="back_Click" />
     </div>
     </form>
 </body>
