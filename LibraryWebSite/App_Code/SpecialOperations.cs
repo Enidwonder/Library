@@ -30,9 +30,9 @@ public class SpecialOperations
         client.Host = "smtp.163.com";//SMTP服务器地址 
         client.Port = 25;//SMTP端口，QQ邮箱填写587 
 
-        client.EnableSsl = true;//启用SSL加密 
+        client.EnableSsl = false;//启用SSL加密 
                                 //发件人邮箱账号，授权码(注意此处，是授权码你需要到qq邮箱里点设置开启Smtp服务，然后会提示你第三方登录时密码处填写授权码)
-        client.Credentials = new System.Net.NetworkCredential("enid1999@163.com", "Ekpm5T");
+        
 
         try
         {
